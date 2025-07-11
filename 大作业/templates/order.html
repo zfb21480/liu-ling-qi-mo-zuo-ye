@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>菜单</title></head>
+<body>
+  <h1>菜单</h1>
+  <ul>
+    {% for item in items %}
+      <li>{{ item.name }} – ￥{{ item.price }}
+        <a href="{{ url_for('add_to_cart', item_id=item.id) }}">加入购物车</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{{ url_for('cart') }}">查看购物车</a>
+</body>
+</html>

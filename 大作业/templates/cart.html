@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>购物车</title></head>
+<body>
+  <h1>购物车</h1>
+  <form method="post" action="{{ url_for('update_cart') }}">
+    <table border="1" cellspacing="0" cellpadding="8">
+      <tr><th>菜名</th><th>单价</th><th>数量</th><th>小计</th></tr>
+      {% for item in items %}
+      <tr>
+        <td>{{ item.name }}</td>
+        <td>￥{{ item.price }}</td>
+        <td>
+          <input type="number" name="quantity_{{ item.id }}" value="{{ item.quantity }}" min="0">
+        </td>
+        <td>￥{{ item.subtotal }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <p>总计：￥{{ total }}</p>
+    <input type="submit" value="更新购物车">
+    <a href="{{ url_for('checkout') }}"><button type="button">结账</button></a>
+  </form>
+</body>
+</html>

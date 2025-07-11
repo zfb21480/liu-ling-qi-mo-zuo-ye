@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>历史订单</title></head>
+<body>
+  <h1>历史订单</h1>
+  {% for order in orders %}
+    <h2>订单号：{{ order.id }}，客户：{{ order.customer_name }}，总计：￥{{ order.total }}，折扣：{{ order.discount }}，实付：￥{{ order.final_price }}，时间：{{ order.created_at }}</h2>
+    <ul>
+      {% for item in order.order_items %}
+        <li>{{ item.name }} × {{ item.quantity }} （单价：￥{{ item.price }}）</li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+  <a href="{{ url_for('order') }}">返回菜单</a>
+</body>
+</html>

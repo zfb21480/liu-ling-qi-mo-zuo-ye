@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>结账确认</title></head>
+<body>
+  <h1>结账确认</h1>
+  <ul>
+    {% for item in items %}
+      <li>{{ item.name }} × {{ item.quantity }}  = ￥{{ item.subtotal }}</li>
+    {% endfor %}
+  </ul>
+  <p>总计：￥{{ total }}</p>
+  <form method="post">
+    <input type="submit" value="确认下单">
+  </form>
+</body>
+</html>
